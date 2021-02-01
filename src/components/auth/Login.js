@@ -5,34 +5,52 @@ import "./Login.css"
 
 
 export const Login = props => {
-    const email = useRef()
+    const teacherEmail = useRef()
+    const parentEmail = useRef()
     const password = useRef()
     const existDialog = useRef()
     const history = useHistory()
 
-    const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/teachers?email=${email.current.value}`)
+    const existingTeacherCheck = () => {
+        return fetch(`http://localhost:8088/teachers?email=${teacherEmail.current.value}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
 
-    const handleLogin = (e) => {
+    const handleTeacherLogin = (e) => {
+        debugger
         e.preventDefault()
 
-        existingUserCheck()
+        existingTeacherCheck()
             .then(exists => {
-                if (exists && teacher.id) {
+                if (exists) {
                     localStorage.setItem("polyglot_teacher", exists.id)
-                    history.push("/teacher")
-                } else if (exists && parent.id) {
-                  localStorage.setItem("polyglot_parent", exists.id)
-                  history.push("/parent")
-                  
-                }
+                    history.push("/")
                 } else {
                     existDialog.current.showModal()
                 }
             })
+    }
+
+    const existingParentCheck = () => {
+        return fetch(`http://localhost:8088/parents?email=${parentEmail.current.value}`)
+            .then(res => res.json())
+            .then(user => user.length ? user[0] : false)
+    }
+
+    const handleParentLogin = (e) => {
+        debugger
+        e.preventDefault()
+        
+        existingParentCheck()
+            .then(exists => { 
+                if (exists) {
+                localStorage.setItem("polyglot_parent", exists.id)
+                history.push("/")
+            } else {
+                existDialog.current.showModal()
+            }
+        })
     }
 
     return (
@@ -43,12 +61,30 @@ export const Login = props => {
             </dialog>
 
             <section>
-                <form className="form--login" onSubmit={handleLogin}>
+                <form className="form--loginTeacher" onSubmit={handleTeacherLogin}>
                     <h1>Polyglot</h1>
-                    <h2>Parent and Teacher Sign-In</h2>
+                    <h2>Teacher Sign-In</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={email} type="email"
+                        <input ref={teacherEmail} type="email"
+                            id="email"
+                            className="form-control"
+                            placeholder="Email address"
+                            required autoFocus />
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit">
+                            Sign in
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
+            <section>
+                <form className="form--loginParent" onSubmit={handleParentLogin}>
+                    <h2>Parent Sign-In</h2>
+                    <fieldset>
+                        <label htmlFor="inputEmail"> Email address </label>
+                        <input ref={parentEmail} type="email"
                             id="email"
                             className="form-control"
                             placeholder="Email address"
