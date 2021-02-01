@@ -3,26 +3,23 @@
 // send bulletin button (opens message form)
 
 import React, { useContext, useEffect } from "react";
-import { StudentContext } from "./StudentProvider";
-import { CustomerCard } from "./Customer";
-import "./Customer.css";
+import { StudentContext } from "../students/StudentProvider";
+import { Student } from "../students/Student";
 
-export const CustomerList = () => {
-  const { customers, getCustomers } = useContext(CustomerContext);
+export const ClassList = () => {
+  const { students, getStudents } = useContext(StudentContext);
 
   useEffect(() => {
-    console.log("CustomerList: useEffect - getCustomers");
-    getCustomers();
+    getStudents();
 
   }, []);
 
 
   return (
-    <div className="customers">
-      {console.log("CustomerList: Render", customers)}
+    <div className="students">
       {
-        customers.map(customer => {
-          return <CustomerCard key={customer.id} customer={customer} />
+        students.map(student => {
+          return <Student key={student.id} student={student} />
         })
       }
     </div>

@@ -1,41 +1,38 @@
-// search bar to select students to add to roster
-// list has add button next to each result
-// input for class name w/save button
-// class name and list of students appears (to confirm correct) with final save button
+// search bar to add individual student to existing class (list has add  button next to each name)
+// dropdown of classes teacher created
+// save button
 
 import React, { useContext, useEffect, useState } from "react"
-import { EmployeeContext } from "../employee/EmployeeProvider"
-import { LocationContext } from "../location/LocationProvider"
-import "./Employee.css"
+import { StudentContext } from "./StudentProvider"
+import { ClassContext } from "./classes/ClassProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
-export const EmployeeForm = () => {
-    const { addEmployee, getEmployeeById, updateEmployee } = useContext(EmployeeContext)
-    const { locations, getLocations } = useContext(LocationContext)
+export const StudentForm = () => {
+    const { addStudent, getStudentById, updateStudent } = useContext(StudentContext)
+    const { classes, getClasses } = useContext(ClassContext)
+    const { studentClasses, getStudentClasses} = useContext(StudentClassContext)
 
-    const [employee, setEmployee] = useState({
+    const [student, setStudent] = useState({
       name: "",
       locationId: 0
     })
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const { employeeId } = useParams();
+    const { studentId } = useParams();
     const history = useHistory();
     
     const handleControlledInputChange = (event) => {
-      const newEmployee = { ...employee }
-      newEmployee[event.target.id] = event.target.value
-      setEmployee(newEmployee)
+      const newStudent = { ...student }
+      newStudent[event.target.id] = event.target.value
+      setStudent(newStudent)
     }
 
-    const handleSaveEmployee = () => {
-      if (parseInt(employee.locationId) === 0) {
-          window.alert("Please select a location")
-      } else {
-        setIsLoading(true);
-        if (employeeId){
-          updateEmployee({
+    const handleSaveStudent = () => {
+      if (parseInt())
+      setIsLoading(true)
+      if (studentId){
+          updateStudent({
               id: employee.id,
               name: employee.name,
               locationId: parseInt(employee.locationId),

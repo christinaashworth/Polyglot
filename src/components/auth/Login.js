@@ -1,5 +1,4 @@
 import React, { useRef } from "react"
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
 
@@ -7,7 +6,6 @@ import "./Login.css"
 export const Login = props => {
     const teacherEmail = useRef()
     const parentEmail = useRef()
-    const password = useRef()
     const existDialog = useRef()
     const history = useHistory()
 
@@ -18,7 +16,6 @@ export const Login = props => {
     }
 
     const handleTeacherLogin = (e) => {
-        debugger
         e.preventDefault()
 
         existingTeacherCheck()
@@ -39,7 +36,6 @@ export const Login = props => {
     }
 
     const handleParentLogin = (e) => {
-        debugger
         e.preventDefault()
         
         existingParentCheck()
