@@ -13,6 +13,7 @@ export const Polyglot = () => (
         if (localStorage.getItem("polyglot_teacher")) {
           return (
             <>
+              <NavBar />
               <TeacherViews />
             </>
           )

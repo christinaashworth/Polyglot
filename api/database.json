@@ -99,8 +99,67 @@
     },
     {
       "id": 8, 
-      "name": "Hilal  Al-Hashim",
+      "name": "Hilal Al-Hashim",
       "parentId": 5
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "Biology 1st p",
+      "teacherId": 1
+    },
+    {
+      "id": 2,
+      "name": "Environ. Sci. 2nd p",
+      "teacherId": 1
+    },
+    {
+      "id": 3,
+      "name": "Environ. Sci. 3rd p",
+      "teacherId": 1
+    },
+    {
+      "id": 4,
+      "name": "English 1st p",
+      "teacherId": 2
+    },
+    {
+      "id": 5,
+      "name": "AP Eng 2nd p",
+      "teacherId": 2
+    },
+    {
+      "id": 6,
+      "name": "English 3rd p",
+      "teacherId": 2
+    },
+    {
+      "id": 7,
+      "name": "Algebra I",
+      "teacherId": 3
+    },
+    {
+      "id": 8,
+      "name": "Algebra II",
+      "teacherId": 3
+    },
+    {
+      "id": 9,
+      "name": "Geometry",
+      "teacherId": 3
+    }
+  ],
+  "StudentClasses": [
+    {
+      "id": 1,
+      "studentId": 1,
+      "classId": 1
+    },
+    {
+      "id": 2,
+      "studentId": 1,
+      "classId": 2
     }
   ]
 }
