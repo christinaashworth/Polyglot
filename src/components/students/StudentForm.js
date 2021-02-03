@@ -20,8 +20,6 @@ export const StudentForm = () => {
     
     const [displayList, setDisplayList] = useState([])
 
-    const [isLoading, setIsLoading] = useState(true);
-
     const history = useHistory();
     
     const handleControlledInputChange = (event) => {
@@ -31,25 +29,16 @@ export const StudentForm = () => {
     }
     
     const handleSaveStudentClass = () => {
-      // if (parseInt())
-      // setIsLoading(true)
-      //   updateStudentClass({
-      //     id: studentClass.id,
-      //     classId: studentClass.classId,
-      //     studentId: studentClass.studentId
-      //   })
-      //   .then(() => history.push(`/studentClasses/detail/${studentClass.id}`))
-      // } else {
-      //   addStudentClass({
-      //     classId: studentClass.classId,
-      //     studentId: studentClass.studentId
-      //   })
-      //   .then(() => history.push("/studentClasses"))
-      // }
+        addStudentClass({
+          classId: parseInt(studentClass.classId),
+          studentId: parseInt(studentClass.studentId)
+        })
+        .then(() => history.push("/addstudent"))
     }
-    useEffect(() => {
-      console.log(displayList)
-    }, [displayList])
+
+    // useEffect(() => {
+    //   console.log(displayList)
+    // }, [displayList])
     
     useEffect(() => {
       getClasses()
@@ -92,7 +81,6 @@ export const StudentForm = () => {
           </div>
         </fieldset>
         <button className="btn btn-primary"
-          disabled={isLoading}
           onClick={event => {
             event.preventDefault() 
             handleSaveStudentClass()
