@@ -31,7 +31,7 @@ export const StudentProvider = (props) => {
         <StudentContext.Provider value={{
             students, getStudents, addStudent, getStudentById
         }}>
-            {props.students}
+            {props.children}
         </StudentContext.Provider>
     );
 };

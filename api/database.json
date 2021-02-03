@@ -159,7 +159,12 @@
     {
       "id": 2,
       "studentId": 1,
-      "classId": 2
+      "classId": 4
+    },
+    {
+      "id": 3,
+      "studentId": 1,
+      "classId": 7
     }
   ]
 }
