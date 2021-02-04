@@ -2,30 +2,46 @@
 // teachers can delete individual students
 // send bulletin button (opens message form)
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StudentContext } from "../students/StudentProvider";
 import { ClassContext } from "./ClassProvider"
 import { StudentClassContext } from "./StudentClassProvider"
 import { Student } from "../students/Student";
 
 export const ClassList = () => {
-  const { students, getStudents } = useContext(StudentContext);
+  const { studentClasses, getStudentClasses, getStudentClassById} = useContext(StudentClassContext)
   const { classes, getClasses } = useContext(ClassContext)
-  const { addStudentClass, getStudentClassById, updateStudentClass } = useContext(StudentClassContext)
 
-  const [classList, setClassList] = useState([])
+  const [selectedList, setSelectedList] = useState({
+    classId: 0
+  })
 
-  const [teacherClasses, setTeacherClasses] = useState([])
+  const [dropdownList, setDropdownList] = useState([])
+  const [displayList, setDisplayList] = useState([])
+
+  const handleControlledInputChange = (event) => {
+    const newSelectedClass = selectedList
+    newSelectedClass[event.target.id] = parseInt(event.target.value)
+    setSelectedList(newSelectedClass)
+    console.log(selectedList.classId)
+  }
 
   useEffect(() => {
     getClasses()
-      .then(getStudents())
-      .then(() => {
-        const filteredList = classes.filter((classObj) => {
-          return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
-        setTeacherClasses(filteredList)
-      })
+    .then(getStudentClasses)
   }, []);
+
+  useEffect(() => {
+    const filteredList = classes.filter((classObj) => {
+      return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+    setDropdownList(filteredList)
+  }, [classes])
+
+  useEffect(() => {
+    const matchingStudentClasses = studentClasses.filter(c => c.classId === selectedList.classId)
+      console.log(matchingStudentClasses)
+      console.log(studentClasses)
+  }, [studentClasses, (selectedList !== 0)])
 
 
   return (
@@ -33,9 +49,9 @@ export const ClassList = () => {
       <fieldset>
           <div className="form-group">
             <label htmlFor="class">Select a class: </label>
-            <select value={localStorage.polyglot_teacher.locationId} id="locationId" className="form-control" onChange={handleControlledInputChange}>
+            <select value={selectedList.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class: </option>
-              {teacherClasses.map(c => (
+              {dropdownList.map(c => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>

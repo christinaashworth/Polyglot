@@ -36,24 +36,22 @@ export const StudentForm = () => {
         .then(() => history.push("/addstudent"))
     }
 
-    // useEffect(() => {
-    //   console.log(displayList)
-    // }, [displayList])
+    useEffect(() => {
+      console.log(classes)
+      const filterList = classes.filter((classObj) => {
+        console.log(classObj.teacherId)
+        return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+      setDisplayList(filterList)
+    }, [classes])
     
     useEffect(() => {
-      getClasses()
-      .then(getStudents)
-      .then(() => {
-        const filterList = classes.filter((classObj) => {
-          console.log(classObj.teacherId)
-          return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
-        setDisplayList(filterList)
-      })
+      getStudents()
+      .then(getClasses)
     }, [])
 
     return (
       <form className="studentClassForm">
-        <h2 className="studentClassForm__title">"Add Student to Class"</h2>
+        <h2 className="studentClassForm__title">Add Student to Class</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="location">Select a student: </label>
@@ -85,7 +83,7 @@ export const StudentForm = () => {
             event.preventDefault() 
             handleSaveStudentClass()
           }}>
-        "Save Class Assignment"</button>
+        Save Class Assignment</button>
       </form>
     )
 }

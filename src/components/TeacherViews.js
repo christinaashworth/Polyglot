@@ -14,15 +14,13 @@ export const TeacherViews = () => {
         <Home2 />
       </Route>
 
-    <StudentProvider>
       <ClassProvider>
         <StudentClassProvider>
-        <Route exact path="/classlist">
+        <Route exact path="/classlists">
           <ClassList />
         </Route>
       </StudentClassProvider>
       </ClassProvider>
-    </StudentProvider>
 
 
     <StudentProvider>
