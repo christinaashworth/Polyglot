@@ -31,11 +31,6 @@ export const ClassForm = () => {
         .then(() => history.push("/addclass"))
     }
 
-    
-    // useEffect(() => {
-    //   getClasses()
-    // }, [])
-
     return (
       <form className="classForm">
         <h2 className="classForm__title">Add Class</h2>
