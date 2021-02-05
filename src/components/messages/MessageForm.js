@@ -1,14 +1,11 @@
-// search bar to add individual student to existing class (list has add  button next to each name)
-// dropdown of classes teacher created
-// save button
-
 import React, { useContext, useEffect, useState } from "react"
-import { StudentContext } from "./StudentProvider"
+import { StudentContext } from "../students/StudentProvider"
 import { ClassContext } from "../classes/ClassProvider"
 import { StudentClassContext } from "../classes/StudentClassProvider.js"
+import { MessageContext } from "./MessageProvider"
 import { useHistory } from 'react-router-dom';
 
-export const StudentForm = () => {
+export const MessageForm = () => {
     const { addStudentClass, getStudentClassById, updateStudentClass } = useContext(StudentClassContext)
     const { classes, getClasses } = useContext(ClassContext)
     const { students, getStudents} = useContext(StudentContext)
@@ -49,23 +46,10 @@ export const StudentForm = () => {
 
     return (
       <form className="studentClassForm">
-        <h2 className="studentClassForm__title">Add Student to Class</h2>
+        <h2 className="studentClassForm__title">Send Bulletin</h2>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="location">Select a student: </label>
-            <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
-              <option value="0">Select a student</option>
-              {students.map(s => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Assign to class: </label>
+            <label htmlFor="location">Class: </label>
             <select value={studentClass.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
@@ -76,12 +60,13 @@ export const StudentForm = () => {
             </select>
           </div>
         </fieldset>
+        
         <button className="btn btn-primary"
           onClick={event => {
             event.preventDefault() 
             handleSaveStudentClass()
           }}>
-        Save Class Assignment</button>
+        Send Bulletin</button>
       </form>
     )
 }

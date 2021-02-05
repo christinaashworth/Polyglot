@@ -12,18 +12,12 @@ export const ClassList = () => {
   const { studentClasses, getStudentClasses, getStudentClassById} = useContext(StudentClassContext)
   const { classes, getClasses } = useContext(ClassContext)
 
-  const [selectedList, setSelectedList] = useState({
-    classId: 0
-  })
-
+  const [matchingStudentClasses, setMatchingStudentClasses] = useState([])
   const [dropdownList, setDropdownList] = useState([])
-  const [displayList, setDisplayList] = useState([])
 
-  const handleControlledInputChange = (event) => {
-    const newSelectedClass = selectedList
-    newSelectedClass[event.target.id] = parseInt(event.target.value)
-    setSelectedList(newSelectedClass)
-    console.log(selectedList.classId)
+  const filterResults = (event) => {
+    const matchingStudentClasses = studentClasses.filter(sc => sc.classId === parseInt(event.target.value))
+      setMatchingStudentClasses(matchingStudentClasses)
   }
 
   useEffect(() => {
@@ -37,19 +31,13 @@ export const ClassList = () => {
     setDropdownList(filteredList)
   }, [classes])
 
-  useEffect(() => {
-    const matchingStudentClasses = studentClasses.filter(c => c.classId === selectedList.classId)
-      console.log(matchingStudentClasses)
-      console.log(studentClasses)
-  }, [studentClasses, (selectedList !== 0)])
-
-
   return (
+    <>
     <form className="classList">
       <fieldset>
           <div className="form-group">
             <label htmlFor="class">Select a class: </label>
-            <select value={selectedList.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
+            <select id="classId" className="form-control" onChange={filterResults}>
               <option value="0">Select a class: </option>
               {dropdownList.map(c => (
                 <option key={c.id} value={c.id}>
@@ -60,5 +48,10 @@ export const ClassList = () => {
           </div>
       </fieldset>
     </form>
+    <div>
+    {matchingStudentClasses.map(classObj => (
+    <Student key={classObj.student.id} student={classObj.student} />))}
+    </div>
+    </>
   )
 };
