@@ -2,7 +2,7 @@ import React, { useState, createContext } from "react";
 
 export const TeacherContext = createContext();
 
-export const TeacherClassProvider = (props) => {
+export const TeacherProvider = (props) => {
     const [teachers, setTeachers] = useState([]);
 
     const getTeachers = () => {

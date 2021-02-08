@@ -1,7 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { StudentProvider } from "./students/StudentProvider";
-import { Home2 } from "./Home2"
+import { TeacherWelcome } from "./TeacherWelcome"
+import { TeacherProvider } from "./classes/TeacherProvider"
 import { ClassProvider } from "./classes/ClassProvider";
 import { ClassForm } from "./classes/ClassForm";
 import { StudentClassProvider } from "./classes/StudentClassProvider";
@@ -14,7 +15,9 @@ export const TeacherViews = () => {
   return (
     <>
       <Route exact path="/">
-        <Home2 />
+        <TeacherProvider>
+          <TeacherWelcome/>
+        </TeacherProvider>
       </Route>
 
       <ClassProvider>

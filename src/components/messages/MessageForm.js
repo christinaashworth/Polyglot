@@ -6,13 +6,14 @@ import { MessageContext } from "./MessageProvider"
 import { useHistory } from 'react-router-dom';
 
 export const MessageForm = () => {
-    const { addStudentClass, getStudentClassById, updateStudentClass } = useContext(StudentClassContext)
+    const { addMessage } = useContext(MessageContext)
     const { classes, getClasses } = useContext(ClassContext)
     const { students, getStudents} = useContext(StudentContext)
 
-    const [studentClass, setStudentClass] = useState({
+    const [message, setMessage] = useState({
       classId: 0,
-      studentId: 0
+      teacherId: 0,
+      text: ""
     })
     
     const [displayList, setDisplayList] = useState([])
@@ -20,18 +21,20 @@ export const MessageForm = () => {
     const history = useHistory();
     
     const handleControlledInputChange = (event) => {
-      const newStudentClass = { ...studentClass }
-      newStudentClass[event.target.id] = event.target.value
-      setStudentClass(newStudentClass)
+      const newMessage = { ...message }
+      newMessage[event.target.id] = event.target.value
+      setMessage(newMessage)
     }
     
-    const handleSaveStudentClass = () => {
-        addStudentClass({
-          classId: parseInt(studentClass.classId),
-          studentId: parseInt(studentClass.studentId)
+    const handleSaveMessage = () => {
+        addMessage({
+          classId: parseInt(message.classId),
+          teacherId: parseInt(localStorage.polyglot_teacher),
+          text: (message.text)
         })
-        .then(() => history.push("/addstudent"))
-    }
+        .then(() => { window.alert("Message sent!")
+        history.push("/message")
+      })}
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
@@ -45,12 +48,12 @@ export const MessageForm = () => {
     }, [])
 
     return (
-      <form className="studentClassForm">
-        <h2 className="studentClassForm__title">Send Bulletin</h2>
+      <form className="messageForm">
+        <h2 className="messageForm__title">Send Bulletin</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="location">Class: </label>
-            <select value={studentClass.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
+            <select value={message.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
                 <option key={c.id} value={c.id}>
@@ -60,11 +63,19 @@ export const MessageForm = () => {
             </select>
           </div>
         </fieldset>
-        
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="name">Message: </label>
+            <textarea id="text" required autoFocus className="form-control"
+            placeholder="Enter message here"
+            onChange={handleControlledInputChange}
+            value={message.text}/>
+          </div>
+        </fieldset>
         <button className="btn btn-primary"
           onClick={event => {
             event.preventDefault() 
-            handleSaveStudentClass()
+            handleSaveMessage()
           }}>
         Send Bulletin</button>
       </form>
