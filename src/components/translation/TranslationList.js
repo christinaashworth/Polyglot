@@ -1,23 +1,21 @@
-import React, { useContext, useEffect } from "react";
-import { TranslationContext } from "./TranslationProvider";
-import { TranslationCard } from "./Translation";
-import "./Message.css";
+import React, { useContext } from "react";
+import { ParentContext } from "../students/ParentProvider";
+import { TranslationContext } from "./TranslationProvider"
 
-export const TranslationList = () => {
-  const { translations, getTranslations } = useContext(TranslationContext);
+export const TranslationList = (event) => {
+  const { results, addTranslation } = useContext(TranslationContext);
+  const { parents, getParents } = useContext(ParentContext);
+  
+  const message = event.target.value
 
-  useEffect(() => {
-    getTranslations()
-  }, []);
+  const applicableParent = parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
+  const userLanguage = applicableParent.language
 
-
-  return (
-    <div className="messages">
-      {
-        messages.map(message => {
-          return <MessageCard key={message.id} message={message} />
-        })
-      }
+    addTranslation(message.text, userLanguage)
+    console.log(results)
+    return (
+      <div>
+      <p>{results}</p>
     </div>
   );
 };

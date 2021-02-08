@@ -3,7 +3,7 @@
     {
       "classId": 4,
       "teacherId": 2,
-      "text": "fewfwefwfewefwef",
+      "text": "We need pencils!",
       "id": 1
     },
     {
@@ -17,6 +17,12 @@
       "teacherId": 2,
       "text": "hey wassup",
       "id": 3
+    },
+    {
+      "classId": 12,
+      "teacherId": 2,
+      "text": "wgfwoiejgoijwe",
+      "id": 4
     }
   ],
   "translations": [
@@ -168,6 +174,11 @@
       "name": "english 4th period",
       "teacherId": 2,
       "id": 11
+    },
+    {
+      "name": "rpigjoprig",
+      "teacherId": 2,
+      "id": 12
     }
   ],
   "StudentClasses": [
@@ -225,6 +236,11 @@
       "classId": 10,
       "studentId": 4,
       "id": 11
+    },
+    {
+      "classId": 12,
+      "studentId": 6,
+      "id": 12
     }
   ]
 }
