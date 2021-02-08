@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home } from "./Home"
+import { ParentWelcome } from "./ParentWelcome"
+import { ParentProvider } from "./students/ParentProvider"
 import { ClassProvider } from "./classes/ClassProvider";
 import { MessageProvider } from "./messages/MessageProvider";
 import { StudentProvider } from "./students/StudentProvider";
@@ -10,18 +11,20 @@ import { StudentClassProvider } from "./classes/StudentClassProvider";
 export const ParentViews = () => {
   return (
     <>
+      <ParentProvider>
       <StudentClassProvider>
       <StudentProvider>
         <ClassProvider>
           <MessageProvider>
             <Route exact path="/">
-              <Home />
+              <ParentWelcome />
               <MessageList />
             </Route>
           </MessageProvider>
         </ClassProvider>
       </StudentProvider>
       </StudentClassProvider>
+      </ParentProvider>
     </>
   )
 }

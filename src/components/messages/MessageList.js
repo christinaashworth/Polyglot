@@ -26,15 +26,16 @@ export const MessageList = () => {
   }
 
   const classFilterResults = (event) => {
-    const matchingClass = classes.filter(c => c.id === parseInt(event.target.value))
+    const matchingClass = studentClasses.filter(c => c.id === parseInt(event.target.value))
     setMatchingClass(matchingClass)
     console.log(matchingClass)
   }
 
   const messageFilterResults = (event) => {
-    const matchingMessages = messages.filter(m => m.classId === matchingClass)
+    if (matchingClass !== 0) { 
+    const matchingMessages = messages.filter(m => m.classId === matchingClass.classId)
     setMatchingMessages(matchingMessages)
-    console.log(matchingMessages)
+    }
   }
 
   useEffect(() => {
@@ -48,14 +49,12 @@ export const MessageList = () => {
     const filteredList = students.filter((student) => {
       return student.parentId === parseInt(localStorage.polyglot_parent)})          
     setStudentDropdownList(filteredList)
-    console.log(studentDropdownList)
   }, [students])
 
   useEffect(() => {
     const filteredList = studentClasses.filter((classObj) => {
       return classObj.studentId === matchingStudent.id})          
     setClassDropdownList(filteredList)
-    console.log(classDropdownList)
   }, [classes, matchingStudent])
 
   return (
@@ -77,7 +76,7 @@ export const MessageList = () => {
       <fieldset>
           <div className="form-group">
             <label htmlFor="class">Class name: </label>
-            <select id="classId" className="form-control" onChange={messageFilterResults}>
+            <select id="classId" className="form-control" onChange={classFilterResults, messageFilterResults}>
               <option value="0">Select a class: </option>
               {classDropdownList.map(c => (
                 <option key={c.id} value={c.id}>
