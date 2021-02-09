@@ -1,11 +1,13 @@
 import React from "react";
 import "./Message.css";
 
-export const MessageCard = ({ message }) => (
+
+export const MessageCard = ({ message, handleButtonClick }) => {
+  return (
     <section className="message">
         <div className="message__text">{message.text}</div>
-        <button className="btn btn-primary"
-          onClick={event => {
-            event.preventDefault()}}>Translate!</button>
+        <button className="btn btn-primary" id={message.id}
+          onClick={() => handleButtonClick(message)}>Translate!</button>
     </section>
-);
+  )
+};

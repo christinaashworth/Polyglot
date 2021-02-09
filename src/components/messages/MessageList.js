@@ -5,19 +5,24 @@ import { StudentClassContext } from "../classes/StudentClassProvider"
 import { Student } from "../students/Student";
 import { MessageCard } from "./Message"
 import { MessageContext } from "./MessageProvider"
+import { TranslationList } from "../translation/TranslationList";
+
 
 export const MessageList = () => {
   const { messages, getMessages} = useContext(MessageContext)
+  console.log("messages array", messages)
   const { classes, getClasses } = useContext(ClassContext)
   const { students, getStudents } = useContext(StudentContext)
   const { studentClasses, getStudentClasses } = useContext(StudentClassContext)
+  
 
   const [matchingMessages, setMatchingMessages] = useState([])
-  const [matchingStudent, setMatchingStudent] = useState([])
-  const [matchingClass, setMatchingClass] = useState([])
+  const [matchingStudent, setMatchingStudent] = useState({})
+  const [selectedMessage, setSelectedMessage] = useState({})
 
   const [studentDropdownList, setStudentDropdownList] = useState([])
   const [classDropdownList, setClassDropdownList] = useState([])
+  const [showTranslation, setShowTranslation] = useState(false)
 
   const studentFilterResults = (event) => {
     const matchingStudent = students.find(s => s.id === parseInt(event.target.value))
@@ -26,16 +31,13 @@ export const MessageList = () => {
   }
 
   const classFilterResults = (event) => {
-    const matchingClass = studentClasses.filter(c => c.id === parseInt(event.target.value))
-    setMatchingClass(matchingClass)
-    console.log(matchingClass)
+    const matchingClass = studentClasses.find(c => c.id === parseInt(event.target.value))
+    messageFilterResults(matchingClass)
   }
 
-  const messageFilterResults = (event) => {
-    if (matchingClass !== 0) { 
-    const matchingMessages = messages.filter(m => m.classId === matchingClass.classId)
+  const messageFilterResults = (classObj) => {
+    const matchingMessages = messages.filter(m => m.classId === classObj.classId)
     setMatchingMessages(matchingMessages)
-    }
   }
 
   useEffect(() => {
@@ -55,7 +57,13 @@ export const MessageList = () => {
     const filteredList = studentClasses.filter((classObj) => {
       return classObj.studentId === matchingStudent.id})          
     setClassDropdownList(filteredList)
-  }, [classes, matchingStudent])
+  }, [matchingStudent])
+  console.log(matchingMessages)
+
+  const handleButtonClick = (message) => {
+    setShowTranslation(true)
+    setSelectedMessage(message)
+  }
 
   return (
     <>
@@ -76,7 +84,7 @@ export const MessageList = () => {
       <fieldset>
           <div className="form-group">
             <label htmlFor="class">Class name: </label>
-            <select id="classId" className="form-control" onChange={classFilterResults, messageFilterResults}>
+            <select id="classId" className="form-control" onChange={classFilterResults}>
               <option value="0">Select a class: </option>
               {classDropdownList.map(c => (
                 <option key={c.id} value={c.id}>
@@ -89,7 +97,10 @@ export const MessageList = () => {
     </form>
     <div>
     {matchingMessages.map(message => (
-    <MessageCard key={message.id} message={message} />))}
+      <MessageCard key={message.id} message={message} handleButtonClick={handleButtonClick}/>))}
+    </div>
+    <div>
+      {showTranslation ? <TranslationList message={selectedMessage} /> : ""}  
     </div>
     </>
   )

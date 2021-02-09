@@ -30,7 +30,7 @@ export const NavBar = (props) => {
     return (
       <ul className="navbar">
         <li className="navbar__item">
-              <Link className="navbar__link" to="/logout">Log Out</Link>
+        <button onClick={Logout()}>Log Out</button>
         </li>
       </ul>
     )
