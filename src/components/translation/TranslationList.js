@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ParentContext } from "../students/ParentProvider";
 import { TranslationContext } from "./TranslationProvider"
 
-export const TranslationList = (event) => {
+export const TranslationList = ({message}) => {
   const { results, addTranslation } = useContext(TranslationContext);
   const { parents, getParents } = useContext(ParentContext);
   
-  const message = event.target.value
-
   const applicableParent = parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
   const userLanguage = applicableParent.language
-
+  
+  useEffect(() => { 
     addTranslation(message.text, userLanguage)
-    console.log(results)
+  }, [message])
+
     return (
       <div>
       <p>{results}</p>

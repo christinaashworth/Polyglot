@@ -5,6 +5,7 @@ import { StudentClassContext } from "../classes/StudentClassProvider"
 import { Student } from "../students/Student";
 import { MessageCard } from "./Message"
 import { MessageContext } from "./MessageProvider"
+import { TranslationList } from "../translation/TranslationList";
 
 
 export const MessageList = () => {
@@ -17,9 +18,11 @@ export const MessageList = () => {
 
   const [matchingMessages, setMatchingMessages] = useState([])
   const [matchingStudent, setMatchingStudent] = useState({})
+  const [selectedMessage, setSelectedMessage] = useState({})
 
   const [studentDropdownList, setStudentDropdownList] = useState([])
   const [classDropdownList, setClassDropdownList] = useState([])
+  const [showTranslation, setShowTranslation] = useState(false)
 
   const studentFilterResults = (event) => {
     const matchingStudent = students.find(s => s.id === parseInt(event.target.value))
@@ -57,6 +60,11 @@ export const MessageList = () => {
   }, [matchingStudent])
   console.log(matchingMessages)
 
+  const handleButtonClick = (message) => {
+    setShowTranslation(true)
+    setSelectedMessage(message)
+  }
+
   return (
     <>
     <form className="classList">
@@ -89,7 +97,10 @@ export const MessageList = () => {
     </form>
     <div>
     {matchingMessages.map(message => (
-    <MessageCard key={message.id} message={message} />))}
+      <MessageCard key={message.id} message={message} handleButtonClick={handleButtonClick}/>))}
+    </div>
+    <div>
+      {showTranslation ? <TranslationList message={selectedMessage} /> : ""}  
     </div>
     </>
   )

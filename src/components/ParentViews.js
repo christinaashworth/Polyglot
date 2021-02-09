@@ -8,7 +8,6 @@ import { MessageProvider } from "./messages/MessageProvider";
 import { StudentProvider } from "./students/StudentProvider";
 import { MessageList } from "./messages/MessageList";
 import { StudentClassProvider } from "./classes/StudentClassProvider";
-import { TranslationList } from "./translation/TranslationList";
 import { TranslationProvider } from "./translation/TranslationProvider";
 
 export const ParentViews = () => {
@@ -24,7 +23,6 @@ export const ParentViews = () => {
               <ParentWelcome />
               <article className="messageTranslateContainer">
               <MessageList />
-              {/* <TranslationList/> */}
               </article>
             </Route>
           </MessageProvider>

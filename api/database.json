@@ -9,20 +9,8 @@
     {
       "classId": 4,
       "teacherId": 2,
-      "text": "fewfwefwfewefwef",
+      "text": "hello world",
       "id": 2
-    },
-    {
-      "classId": 10,
-      "teacherId": 2,
-      "text": "hey wassup",
-      "id": 3
-    },
-    {
-      "classId": 12,
-      "teacherId": 2,
-      "text": "wgfwoiejgoijwe",
-      "id": 4
     }
   ],
   "translations": [
@@ -164,21 +152,6 @@
       "id": 9,
       "name": "Geometry",
       "teacherId": 3
-    },
-    {
-      "name": "english 4th period",
-      "teacherId": 2,
-      "id": 10
-    },
-    {
-      "name": "english 4th period",
-      "teacherId": 2,
-      "id": 11
-    },
-    {
-      "name": "rpigjoprig",
-      "teacherId": 2,
-      "id": 12
     }
   ],
   "StudentClasses": [
@@ -231,16 +204,6 @@
       "classId": 6,
       "studentId": 8,
       "id": 10
-    },
-    {
-      "classId": 10,
-      "studentId": 4,
-      "id": 11
-    },
-    {
-      "classId": 12,
-      "studentId": 6,
-      "id": 12
     }
   ]
 }

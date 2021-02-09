@@ -1,23 +1,27 @@
 import React, { useState, createContext } from "react";
+import { settings } from "../../settings"
 
 export const TranslationContext = createContext();
 
 export const TranslationProvider = (props) => {
-    const { results, setResults } = useState("");
+    const [ results, setResults ] = useState("");
 
-    const addTranslation = (language, text) => {
-        return fetch("http://localhost:8088/translations", {
+    const addTranslation = (text, language) => {
+        return fetch(`https://translation.googleapis.com/language/translate/v2?key=${settings.key}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: {
+            body: JSON.stringify({
                 q: text,
-                target: language.value,
-                key: "",
-            },
+                target: language
+            }),
         })
-        .then(setResults)
+        .then((response) => response.json())
+        .then((results) => { 
+            console.log(results)
+            setResults(results.data.translations[0].translatedText)
+        })
 
     };
 
