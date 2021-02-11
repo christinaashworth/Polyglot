@@ -3,13 +3,13 @@ import { StudentContext } from "../students/StudentProvider";
 import { ClassContext } from "../classes/ClassProvider"
 import { StudentClassContext } from "../classes/StudentClassProvider"
 import { Student } from "../students/Student";
-import { MessageCard } from "./Message"
-import { MessageContext } from "./MessageProvider"
+import { MessageCard } from "../messages/Message"
+import { MessageContext } from "../messages/MessageProvider"
 import { TranslationList } from "../translation/TranslationList";
 
 
 export const MessageList = () => {
-  const { messages, getMessages} = useContext(MessageContext)
+  const { messages, getMessages } = useContext(MessageContext)
   console.log("messages array", messages)
   const { classes, getClasses } = useContext(ClassContext)
   const { students, getStudents } = useContext(StudentContext)

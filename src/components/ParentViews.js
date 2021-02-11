@@ -6,7 +6,7 @@ import { ParentProvider } from "./students/ParentProvider"
 import { ClassProvider } from "./classes/ClassProvider";
 import { MessageProvider } from "./messages/MessageProvider";
 import { StudentProvider } from "./students/StudentProvider";
-import { MessageList } from "./messages/MessageList";
+import { MessageList } from "./messages/ParentMessageList";
 import { StudentClassProvider } from "./classes/StudentClassProvider";
 import { TranslationProvider } from "./translation/TranslationProvider";
 

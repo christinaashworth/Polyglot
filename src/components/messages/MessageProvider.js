@@ -11,7 +11,7 @@ export const MessageProvider = (props) => {
         .then(setMessages)
     };
 
-    const getMessagesById = (id) => {
+    const getMessageById = (id) => {
         return fetch(`http://localhost:8088/messages/${id}`)
             .then(res => res.json())
     };
@@ -27,9 +27,27 @@ export const MessageProvider = (props) => {
         .then(getMessages)
     };
 
+    const updateMessage = message => {
+        return fetch(`http://localhost:8088/messages/${message.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(message)
+        })
+          .then(getMessages)
+      };
+
+    const deleteMessage = messageId => {
+        return fetch(`http://localhost:8088/messages/${messageId}`, {
+            method: "DELETE"
+        })
+            .then(getMessages)
+    };
+
     return (
         <MessageContext.Provider value={{
-            messages, getMessages, addMessage
+            messages, getMessages, getMessageById, addMessage, updateMessage, deleteMessage
         }}>
             {props.children}
         </MessageContext.Provider>
