@@ -16,12 +16,14 @@ export const TeacherWelcome = () => {
     return (
       <>
         <h2>Welcome, {teacher.name}!</h2>
+        <h4>Please select an option from the navigation bar.</h4>
       </>
     )
   } else {
     return (
       <>
         <h2>Welcome!</h2>
+        <h4>Please select an option from the navigation bar.</h4>
       </>
   )
 }};

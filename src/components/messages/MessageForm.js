@@ -3,10 +3,10 @@ import { StudentContext } from "../students/StudentProvider"
 import { ClassContext } from "../classes/ClassProvider"
 import { StudentClassContext } from "../classes/StudentClassProvider.js"
 import { MessageContext } from "./MessageProvider"
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export const MessageForm = () => {
-    const { addMessage } = useContext(MessageContext)
+    const { addMessage, getMessageById, updateMessage } = useContext(MessageContext)
     const { classes, getClasses } = useContext(ClassContext)
     const { students, getStudents} = useContext(StudentContext)
 
@@ -19,6 +19,7 @@ export const MessageForm = () => {
     const [displayList, setDisplayList] = useState([])
 
     const history = useHistory();
+    const {messageId} = useParams()
     
     const handleControlledInputChange = (event) => {
       const newMessage = { ...message }
@@ -27,14 +28,25 @@ export const MessageForm = () => {
     }
     
     const handleSaveMessage = () => {
+      if (messageId) {
+        updateMessage({
+          id: message.id,
+          classId: parseInt(message.classId),
+          teacherId: parseInt(localStorage.polyglot_teacher),
+          text: message.text
+        })
+          .then(() => history.push("/viewmessages"))
+       } else {
         addMessage({
           classId: parseInt(message.classId),
           teacherId: parseInt(localStorage.polyglot_teacher),
-          text: (message.text)
+          text: message.text
         })
-        .then(() => { window.alert("Message sent!")
-        history.push("/message")
-      })}
+          .then(() => { window.alert("Message sent!")
+          history.push("/viewmessages")
+        })
+      }
+    }
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
@@ -45,6 +57,14 @@ export const MessageForm = () => {
     useEffect(() => {
       getStudents()
       .then(getClasses)
+      .then(() => {
+        if (messageId) {
+          getMessageById(messageId)
+            .then(message => {
+              setMessage(message)
+            })
+        }
+      })
     }, [])
 
     return (
@@ -77,7 +97,7 @@ export const MessageForm = () => {
             event.preventDefault() 
             handleSaveMessage()
           }}>
-        Send Bulletin</button>
+        {messageId ? "Save Edited Message" : "Send Message"}</button>
       </form>
     )
 }

@@ -20,7 +20,10 @@ export const NavBar = (props) => {
               <Link className="navbar__link" to="/addstudent">Add a Student</Link>
           </li>
           <li className="navbar__item">
-              <Link className="navbar__link" to="/message">Send Message</Link>
+              <Link className="navbar__link" to="/sendmessage">Send Message</Link>
+          </li>
+          <li className="navbar__item">
+              <Link className="navbar__link" to="/viewmessages">View Messages</Link>
           </li>
           <li className="navbar__item">
               <button onClick={Logout()}>Log Out</button>

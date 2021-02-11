@@ -6,7 +6,7 @@ export const ClassProvider = (props) => {
   const [classes, setClasses] = useState([]);
 
   const getClasses = () => {
-        return fetch("http://localhost:8088/classes")
+        return fetch("http://localhost:8088/classes?_expand=teacher")
         .then(res => res.json())
         .then(setClasses)
     };

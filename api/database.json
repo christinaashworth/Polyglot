@@ -1,22 +1,16 @@
 {
   "messages": [
     {
+      "id": 1,
       "classId": 4,
       "teacherId": 2,
-      "text": "We need pencils!",
-      "id": 1
+      "text": "We need pencils! Now!"
     },
     {
       "classId": 4,
       "teacherId": 2,
       "text": "hello world",
       "id": 2
-    }
-  ],
-  "translations": [
-    {
-      "id": 1,
-      "text": "hola, como estas?"
     }
   ],
   "teachers": [
@@ -152,6 +146,11 @@
       "id": 9,
       "name": "Geometry",
       "teacherId": 3
+    },
+    {
+      "name": "English 4th period",
+      "teacherId": 2,
+      "id": 10
     }
   ],
   "StudentClasses": [
@@ -204,6 +203,11 @@
       "classId": 6,
       "studentId": 8,
       "id": 10
+    },
+    {
+      "classId": 10,
+      "studentId": 3,
+      "id": 11
     }
   ]
 }

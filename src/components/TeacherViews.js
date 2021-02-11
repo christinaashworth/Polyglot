@@ -10,6 +10,7 @@ import { StudentForm } from "./students/StudentForm";
 import { ClassList } from "./classes/ClassList";
 import { MessageForm } from "./messages/MessageForm";
 import { MessageProvider } from "./messages/MessageProvider";
+import { TeacherMessageList } from "./messages/TeacherMessageList";
 
 export const TeacherViews = () => {
   return (
@@ -36,7 +37,13 @@ export const TeacherViews = () => {
             <Route path="/addstudent">
               <StudentForm />
             </Route>
-            <Route path="/message">
+            <Route path="/sendmessage">
+              <MessageForm />
+            </Route>
+            <Route path="/viewmessages">
+              <TeacherMessageList />
+            </Route>
+            <Route path="/messages/edit/:messageId(\d+)">
               <MessageForm />
             </Route>
           </MessageProvider>
@@ -49,8 +56,6 @@ export const TeacherViews = () => {
         <ClassForm /> 
       </Route>
     </ClassProvider>
-
-
     </>
   )
 }
