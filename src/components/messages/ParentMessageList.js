@@ -67,10 +67,10 @@ export const MessageList = () => {
 
   return (
     <>
-    <form className="classList">
+    <section className="container">
+    <form className="classList control is-flex">
       <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Student Name: </label>
+          <div className="select">
             <select id="classId" className="form-control" onChange={studentFilterResults}>
               <option value="0">Student name: </option>
               {studentDropdownList.map(c => (
@@ -82,8 +82,7 @@ export const MessageList = () => {
           </div>
       </fieldset>
       <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Class name: </label>
+          <div className="select">
             <select id="classId" className="form-control" onChange={classFilterResults}>
               <option value="0">Select a class: </option>
               {classDropdownList.map(c => (
@@ -95,12 +94,15 @@ export const MessageList = () => {
           </div>
       </fieldset>
     </form>
-    <div>
+    </section>
+    <div className="container section columns">
+    <div className="column">
     {matchingMessages.map(message => (
       <MessageCard key={message.id} message={message} handleButtonClick={handleButtonClick}/>))}
     </div>
-    <div>
+    <div className="column">
       {showTranslation ? <TranslationList message={selectedMessage} /> : ""}  
+    </div>
     </div>
     </>
   )

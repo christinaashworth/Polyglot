@@ -46,11 +46,11 @@ export const TeacherMessageList = () => {
 
   return (
     <>
-    <h2>View Previous Messages</h2>
+    <section className="section container card">
+    <div className="card-header card-header-title is-size-4">View Previous Messages</div>
     <form>
     <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Select a class:</label>
+          <div className="select is-link">
             <select id="classId" className="form-control" onChange={messageFilterResults}>
               <option value="0">Select a class: </option>
               {dropdownList.map(c => (
@@ -62,10 +62,11 @@ export const TeacherMessageList = () => {
           </div>
       </fieldset>
     </form>
-    <div>
+    <div className="section">
     {matchingMessages.map(message => (
       <TeacherMessage key={message.id} message={message} handleDeleteMessage={handleDeleteMessage}/>))}
     </div>
+    </section>
     </>
   )
 

@@ -15,15 +15,19 @@ export const TeacherWelcome = () => {
   if (teacher) {
     return (
       <>
-        <h2>Welcome, {teacher.name}!</h2>
-        <h4>Please select an option from the navigation bar.</h4>
+      <section className="container section">
+        <div className="is-size-3">Welcome, {teacher.name}!</div>
+        <div className="is-size-5">Please select an option from the navigation bar.</div>
+      </section>
       </>
     )
   } else {
     return (
       <>
-        <h2>Welcome!</h2>
-        <h4>Please select an option from the navigation bar.</h4>
+      <section className="container section">
+        <div className="is-size-3">Welcome!</div>
+        <div className="is-size-5">Please select an option from the navigation bar.</div>
+      </section>
       </>
   )
 }};

@@ -6,7 +6,7 @@ import { ParentProvider } from "./students/ParentProvider"
 import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Logout } from "./auth/Logout";
-import "./Polyglot.css";
+// import "./Polyglot.css";
 import { TeacherProvider } from "./classes/TeacherProvider";
 
 export const Polyglot = () => (

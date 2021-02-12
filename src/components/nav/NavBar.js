@@ -1,41 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Logout } from "../auth/Logout";
-import "./NavBar.css";
+import logo from "./PolyglotLogo.png";
 
 export const NavBar = (props) => {
   if (localStorage.polyglot_teacher) {
   return (
-      <ul className="navbar">
-          <li className="navbar__item active">
-              <Link className="navbar__link" to="/">Home</Link>
-          </li>
-          <li className="navbar__item">
-              <Link className="navbar__link" to="/classlists">Class Lists</Link>
-          </li>
-          <li className="navbar__item">
-              <Link className="navbar__link" to="/addclass">Add a Class</Link>
-          </li>
-          <li className="navbar__item">
-              <Link className="navbar__link" to="/addstudent">Add a Student</Link>
-          </li>
-          <li className="navbar__item">
-              <Link className="navbar__link" to="/sendmessage">Send Message</Link>
-          </li>
-          <li className="navbar__item">
-              <Link className="navbar__link" to="/viewmessages">View Messages</Link>
-          </li>
-          <li className="navbar__item">
-              <button onClick={Logout()}>Log Out</button>
-          </li>
-      </ul>
+    <section className="navbar is-warning">
+      <div className="navbar-brand">
+        <img src={logo} width="112" height="112" alt="Logo" />
+      </div>
+      <div className="navbar-menu">
+        <div className="navbar-start">
+          <Link className="navbar-item is-size-5" to="/">Home</Link>
+          <Link className="navbar-item is-size-5" to="/classlists">Class Lists</Link>
+          <Link className="navbar-item is-size-5" to="/addclass">Add a Class</Link>
+          <Link className="navbar-item is-size-5" to="/addstudent">Add a Student</Link>
+          <Link className="navbar-item is-size-5" to="/sendmessage">Send Message</Link>
+          <Link className="navbar-item is-size-5" to="/viewmessages">View Messages</Link>
+        </div>
+        <div className="navbar-end">
+          <button className="button is-light" onClick={Logout()}>Log Out</button> 
+        </div>
+      </div>
+    </section>
   )} else {
     return (
-      <ul className="navbar">
-        <li className="navbar__item">
-        <button onClick={Logout()}>Log Out</button>
-        </li>
-      </ul>
+      <section className="navbar is-warning">
+        <div className="navbar-brand">
+          <img src={logo} width="112" height="112" alt="Logo" />
+        </div>
+          <button className="button is-light" onClick={Logout()}>Log Out</button>
+      </section>
     )
   }
 };

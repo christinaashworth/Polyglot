@@ -48,11 +48,11 @@ export const StudentForm = () => {
     }, [])
 
     return (
-      <form className="studentClassForm">
-        <h2 className="studentClassForm__title">Add Student to Class</h2>
+      <form className="container card">
+        <div className="card header card-header-title is-size-4">Add Student to Class</div>
+        <div className="card-content control">
         <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Select a student: </label>
+          <div className="content select is-link">
             <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a student</option>
               {students.map(s => (
@@ -64,8 +64,7 @@ export const StudentForm = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Assign to class: </label>
+          <div className="content select is-link">
             <select value={studentClass.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
@@ -76,12 +75,13 @@ export const StudentForm = () => {
             </select>
           </div>
         </fieldset>
-        <button className="btn btn-primary"
+        <button className="button is-dark"
           onClick={event => {
             event.preventDefault() 
             handleSaveStudentClass()
           }}>
         Save Class Assignment</button>
+        </div>
       </form>
     )
 }

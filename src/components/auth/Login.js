@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
-import "./Login.css"
 
 
 export const Login = props => {
@@ -50,49 +49,48 @@ export const Login = props => {
     }
 
     return (
-        <main className="container--login">
+        <main className="container login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-
-            <section>
-                <form className="form--loginTeacher" onSubmit={handleTeacherLogin}>
-                    <h1>Polyglot</h1>
-                    <h2>Teacher Sign-In</h2>
+            <section className="is-size-2 has-text-centered">Welcome to Polyglot!</section>
+            <article className="columns is-flex-direction-row">
+            <section className="column">
+                <form className="box has-text-centered" onSubmit={handleTeacherLogin}>
+                    <section className="is-size-4">Teacher Sign-In</section>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={teacherEmail} type="email"
-                            id="email"
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus />
+                        <div className="section is-size-6"> Please enter your email address below </div>
+                            <input className="input" ref={teacherEmail} type="email"
+                                id="email"
+                                placeholder="Email address"
+                                required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="button is-dark" type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
-            <section>
-                <form className="form--loginParent" onSubmit={handleParentLogin}>
-                    <h2>Parent Sign-In</h2>
+            <section class="column">
+                <form className="box has-text-centered" onSubmit={handleParentLogin}>
+                    <section className="is-size-4">Parent Sign-In</section>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={parentEmail} type="email"
-                            id="email"
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus />
+                        <div className="section is-size-6" htmlFor="inputEmail"> Please enter your email address below </div>
+                            <input className="input" ref={parentEmail} type="email"
+                                id="email"
+                                placeholder="Email address"
+                                required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="button is-dark" type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
+            </article>
         </main>
     )
 }

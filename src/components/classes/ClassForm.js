@@ -32,22 +32,21 @@ export const ClassForm = () => {
     }
 
     return (
-      <form className="classForm">
-        <h2 className="classForm__title">Add Class</h2>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="name">Class name: </label>
-            <input type="text" id="name" required autoFocus className="form-control"
-            placeholder="Class name"
-            onChange={handleControlledInputChange}
-            value={classObj.name}/>
+      <form className="container card">
+        <div className="card header card-header-title is-size-4">Add Class</div>
+          <div className="card-content content">
+            <fieldset>
+              <input className="input" type="text" id="name" required autoFocus
+              placeholder="Enter new class name:"
+              onChange={handleControlledInputChange}
+              value={classObj.name}/>
+            </fieldset>
+            <button className="button is-dark"
+              onClick={event => {
+                event.preventDefault() 
+                handleSaveClass()
+              }}>Add Class</button>
           </div>
-        </fieldset>
-        <button className="btn btn-primary"
-          onClick={event => {
-            event.preventDefault() 
-            handleSaveClass()
-          }}>Add Class</button>
       </form>
     )
 }

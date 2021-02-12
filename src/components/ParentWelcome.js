@@ -16,13 +16,13 @@ export const ParentWelcome = () => {
   if (parent) {
     return (
       <>
-        <h2>Welcome, {parent.name}!</h2>
+        <div className="section is-size-4">Welcome, {parent.name}!</div>
       </>
     )
   } else {
     return (
       <>
-        <h2>Welcome!</h2>
+        <div className="section is-size-4">Welcome!</div>
       </>
     )
   }
