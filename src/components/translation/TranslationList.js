@@ -15,7 +15,7 @@ export const TranslationList = ({message}) => {
 
     return (
       <div className="section is-medium card has-background-primary-light">
-      <p className="card-content is-size-4 has-text-centered">{results}</p>
+      <p type="text" className="card-content is-size-4 has-text-centered">{results}</p>
     </div>
   );
 };

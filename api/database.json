@@ -11,6 +11,18 @@
       "teacherId": 2,
       "text": "hello world",
       "id": 2
+    },
+    {
+      "classId": 5,
+      "teacherId": 2,
+      "text": "The students will be reading \"Fahrenheit 451.\" Please let me know if your child will need a copy of the book.",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "classId": 12,
+      "teacherId": 2,
+      "text": "we need some supplies. what's up you all. where are the parties at? We also want to order pizza."
     }
   ],
   "teachers": [
@@ -56,6 +68,7 @@
     {
       "id": 5,
       "name": "Yacoub Al-Hashim",
+      "email": "alhashim@school.com",
       "language": "ar"
     }
   ],
@@ -151,6 +164,16 @@
       "name": "English 4th period",
       "teacherId": 2,
       "id": 10
+    },
+    {
+      "name": "5th period English",
+      "teacherId": 2,
+      "id": 11
+    },
+    {
+      "name": "haaay",
+      "teacherId": 2,
+      "id": 12
     }
   ],
   "StudentClasses": [
@@ -208,6 +231,21 @@
       "classId": 10,
       "studentId": 3,
       "id": 11
+    },
+    {
+      "classId": 11,
+      "studentId": 6,
+      "id": 12
+    },
+    {
+      "classId": 12,
+      "studentId": 7,
+      "id": 13
+    },
+    {
+      "classId": 5,
+      "studentId": 1,
+      "id": 14
     }
   ]
 }
