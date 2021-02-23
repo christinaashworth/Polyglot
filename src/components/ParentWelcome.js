@@ -9,20 +9,20 @@ export const ParentWelcome = () => {
     getParents()
   }, [])
 
-  const findParent = () => parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
+  const findParent = () => parents.find(p => p.id === parseInt(sessionStorage.polyglot_parent))
   const parent = findParent()
   console.log(parent)
 
   if (parent) {
     return (
       <>
-        <h2>Welcome, {parent.name}!</h2>
+        <div className="section is-size-4">Welcome, {parent.name}!</div>
       </>
     )
   } else {
     return (
       <>
-        <h2>Welcome!</h2>
+        <div className="section is-size-4">Welcome!</div>
       </>
     )
   }

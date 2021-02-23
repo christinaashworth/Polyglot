@@ -32,25 +32,23 @@ export const MessageForm = () => {
         updateMessage({
           id: message.id,
           classId: parseInt(message.classId),
-          teacherId: parseInt(localStorage.polyglot_teacher),
+          teacherId: parseInt(sessionStorage.polyglot_teacher),
           text: message.text
         })
           .then(() => history.push("/viewmessages"))
        } else {
         addMessage({
           classId: parseInt(message.classId),
-          teacherId: parseInt(localStorage.polyglot_teacher),
+          teacherId: parseInt(sessionStorage.polyglot_teacher),
           text: message.text
         })
-          .then(() => { window.alert("Message sent!")
-          history.push("/viewmessages")
-        })
+          .then(() => history.push("/viewmessages"))
+        }
       }
-    }
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
-        return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+        return classObj.teacherId === parseInt(sessionStorage.polyglot_teacher)})          
       setDisplayList(filterList)
     }, [classes])
     
@@ -68,11 +66,11 @@ export const MessageForm = () => {
     }, [])
 
     return (
-      <form className="messageForm">
-        <h2 className="messageForm__title">Send Bulletin</h2>
+      <form className="container card">
+        <div className="card header card-header-title is-size-4">Send Bulletin</div>
+        <div className="card-content control">
         <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Class: </label>
+          <div className="content select is-link">
             <select value={message.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
@@ -84,20 +82,20 @@ export const MessageForm = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div className="form-group">
-            <label htmlFor="name">Message: </label>
-            <textarea id="text" required autoFocus className="form-control"
+          <div className="section content">
+            <textarea id="text" required autoFocus className="textarea is-link"
             placeholder="Enter message here"
             onChange={handleControlledInputChange}
             value={message.text}/>
           </div>
         </fieldset>
-        <button className="btn btn-primary"
+        <button className="button is-dark"
           onClick={event => {
             event.preventDefault() 
             handleSaveMessage()
           }}>
         {messageId ? "Save Edited Message" : "Send Message"}</button>
+        </div>
       </form>
     )
 }

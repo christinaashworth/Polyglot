@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
-import "./Login.css"
 
 
 export const Login = props => {
@@ -21,7 +20,7 @@ export const Login = props => {
         existingTeacherCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("polyglot_teacher", exists.id)
+                    sessionStorage.setItem("polyglot_teacher", exists.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()
@@ -41,7 +40,7 @@ export const Login = props => {
         existingParentCheck()
             .then(exists => { 
                 if (exists) {
-                localStorage.setItem("polyglot_parent", exists.id)
+                sessionStorage.setItem("polyglot_parent", exists.id)
                 history.push("/")
             } else {
                 existDialog.current.showModal()
@@ -50,49 +49,48 @@ export const Login = props => {
     }
 
     return (
-        <main className="container--login">
+        <main className="container login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-
-            <section>
-                <form className="form--loginTeacher" onSubmit={handleTeacherLogin}>
-                    <h1>Polyglot</h1>
-                    <h2>Teacher Sign-In</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={teacherEmail} type="email"
+            <section className="hero is-warning is-size-2 has-text-centered">
+                <section className="hero-body title"> Welcome to Polyglot! </section>
+            </section>
+            <article className="columns is-flex-direction-row">
+            <section className="column">
+                <form className="box card" onSubmit={handleTeacherLogin}>
+                    <section className="card-header card-header-title is-centered block is-size-4">Teacher Sign-In</section>
+                    <fieldset className="block card-content">
+                        <input className="input" ref={teacherEmail} type="email"
                             id="email"
-                            className="form-control"
                             placeholder="Email address"
                             required autoFocus />
                     </fieldset>
-                    <fieldset>
-                        <button type="submit">
+                    <fieldset className="has-text-centered">
+                        <button className="button is-dark" type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
-            <section>
-                <form className="form--loginParent" onSubmit={handleParentLogin}>
-                    <h2>Parent Sign-In</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={parentEmail} type="email"
+            <section class="column">
+                <form className="box card" onSubmit={handleParentLogin}>
+                    <section className="card-header card-header-title is-centered block is-size-4">Parent Sign-In</section>
+                    <fieldset className="block card-content">
+                        <input className="input" ref={parentEmail} type="email"
                             id="email"
-                            className="form-control"
                             placeholder="Email address"
                             required autoFocus />
                     </fieldset>
-                    <fieldset>
-                        <button type="submit">
+                    <fieldset className="has-text-centered">
+                        <button className="button is-dark" type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
+            </article>
         </main>
     )
 }

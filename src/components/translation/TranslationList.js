@@ -6,7 +6,7 @@ export const TranslationList = ({message}) => {
   const { results, addTranslation } = useContext(TranslationContext);
   const { parents, getParents } = useContext(ParentContext);
   
-  const applicableParent = parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
+  const applicableParent = parents.find(p => p.id === parseInt(sessionStorage.polyglot_parent))
   const userLanguage = applicableParent.language
   
   useEffect(() => { 
@@ -14,8 +14,8 @@ export const TranslationList = ({message}) => {
   }, [message])
 
     return (
-      <div>
-      <p>{results}</p>
+      <div className="section is-medium card has-background-primary-light">
+      <p type="text" className="card-content is-size-4 has-text-centered">{results}</p>
     </div>
   );
 };

@@ -27,20 +27,22 @@ export const ClassList = () => {
 
   useEffect(() => {
     const filteredList = classes.filter((classObj) => {
-      return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+      return classObj.teacherId === parseInt(sessionStorage.polyglot_teacher)})          
     setDropdownList(filteredList)
   }, [classes])
 
   return (
     <>
-    <form className="classList">
+    <section className="section container tile is-ancestor">
+    <div className="tile is-parent">
+    <section className="tile is-child is-size-6">Select a class from the dropdown to view the list of students currently enrolled.
+    <form>
       <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Select a class: </label>
-            <select id="classId" className="form-control" onChange={filterResults}>
-              <option value="0">Select a class: </option>
+          <div className="select is-link">
+            <select id="classId" onChange={filterResults}>
+             <option value="0">Select a class: </option>
               {dropdownList.map(c => (
-                <option key={c.id} value={c.id}>
+                <option className="dropdown-item" key={c.id} value={c.id}>
                   {c.name}
                 </option>
               ))}
@@ -48,10 +50,16 @@ export const ClassList = () => {
           </div>
       </fieldset>
     </form>
-    <div>
-    {matchingStudentClasses.map(classObj => (
-    <Student key={classObj.student.id} student={classObj.student} />))}
+    </section>
+    <div className="tile is-child card is-size-6">
+      <div className="card-header card-header-title">Enrolled Students:</div>
+        <div className="card-content">
+          {matchingStudentClasses.map(classObj => (
+            <Student key={classObj.student.id} student={classObj.student} />))}
+      </div>
     </div>
+    </div>
+    </section>
     </>
   )
 };

@@ -4,13 +4,25 @@
       "id": 1,
       "classId": 4,
       "teacherId": 2,
-      "text": "We need pencils! Now!"
+      "text": "We need pencils! Please!"
     },
     {
       "classId": 4,
       "teacherId": 2,
-      "text": "hello world",
+      "text": "Please make sure your child turns in their signed field trip form by Friday.",
       "id": 2
+    },
+    {
+      "id": 3,
+      "classId": 5,
+      "teacherId": 2,
+      "text": "The students will be reading Fahrenheit 451. Please let me know if your child will need a copy of the book. Thanks!"
+    },
+    {
+      "id": 4,
+      "classId": 6,
+      "teacherId": 2,
+      "text": "The students will be reading The Catcher in the Rye. Many teenagers feel that they can relate to the main character's feelings, so this should be an engaging read for your child. Chapter 1 should be finished by Thursday, when they will have a quiz."
     }
   ],
   "teachers": [
@@ -56,6 +68,7 @@
     {
       "id": 5,
       "name": "Yacoub Al-Hashim",
+      "email": "alhashim@school.com",
       "language": "ar"
     }
   ],
@@ -99,37 +112,42 @@
       "id": 8,
       "name": "Hilal Al-Hashim",
       "parentId": 5
+    },
+    {
+      "id": 9,
+      "name": "Kirsten Gimenez",
+      "parentId": 1
     }
   ],
   "classes": [
     {
       "id": 1,
-      "name": "Biology 1st p",
+      "name": "Biology 1st p.",
       "teacherId": 1
     },
     {
       "id": 2,
-      "name": "Environ. Sci. 2nd p",
+      "name": "Environ. Sci. 2nd p.",
       "teacherId": 1
     },
     {
       "id": 3,
-      "name": "Environ. Sci. 3rd p",
+      "name": "Environ. Sci. 3rd p.",
       "teacherId": 1
     },
     {
       "id": 4,
-      "name": "English 1st p",
+      "name": "English 1st p.",
       "teacherId": 2
     },
     {
       "id": 5,
-      "name": "AP Eng 2nd p",
+      "name": "AP Eng 2nd p.",
       "teacherId": 2
     },
     {
       "id": 6,
-      "name": "English 3rd p",
+      "name": "Honors English 3rd p.",
       "teacherId": 2
     },
     {
@@ -148,9 +166,19 @@
       "teacherId": 3
     },
     {
-      "name": "English 4th period",
+      "name": "English 4th p.",
       "teacherId": 2,
       "id": 10
+    },
+    {
+      "name": "English 5th p.",
+      "teacherId": 2,
+      "id": 11
+    },
+    {
+      "name": "6th period English",
+      "teacherId": 2,
+      "id": 12
     }
   ],
   "StudentClasses": [
@@ -208,6 +236,36 @@
       "classId": 10,
       "studentId": 3,
       "id": 11
+    },
+    {
+      "classId": 11,
+      "studentId": 6,
+      "id": 12
+    },
+    {
+      "classId": 5,
+      "studentId": 3,
+      "id": 15
+    },
+    {
+      "classId": 5,
+      "studentId": 9,
+      "id": 16
+    },
+    {
+      "classId": 11,
+      "studentId": 2,
+      "id": 17
+    },
+    {
+      "classId": 12,
+      "studentId": 2,
+      "id": 18
+    },
+    {
+      "classId": 12,
+      "studentId": 4,
+      "id": 20
     }
   ]
 }

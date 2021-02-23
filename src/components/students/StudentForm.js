@@ -33,12 +33,12 @@ export const StudentForm = () => {
           classId: parseInt(studentClass.classId),
           studentId: parseInt(studentClass.studentId)
         })
-        .then(() => history.push("/addstudent"))
+        .then(() => history.push("/classlists"))
     }
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
-        return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+        return classObj.teacherId === parseInt(sessionStorage.polyglot_teacher)})          
       setDisplayList(filterList)
     }, [classes])
     
@@ -48,24 +48,14 @@ export const StudentForm = () => {
     }, [])
 
     return (
-      <form className="studentClassForm">
-        <h2 className="studentClassForm__title">Add Student to Class</h2>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Select a student: </label>
-            <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
-              <option value="0">Select a student</option>
-              {students.map(s => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Assign to class: </label>
+      <form className="container card">
+        <div className="card header card-header-title is-size-4">Add Student to Class</div>
+        <div className="card-content control">
+        <div className="block">Select a class, then select a student to add to the selected class. <br></br>
+        Once you click "Save Class Assignment", you will be redirected to the "Class Lists" page.
+        </div>
+        <fieldset className="block">
+          <div className="content select is-link">
             <select value={studentClass.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
@@ -76,12 +66,25 @@ export const StudentForm = () => {
             </select>
           </div>
         </fieldset>
-        <button className="btn btn-primary"
+        <fieldset className="block">
+          <div className="content select is-link">
+            <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
+              <option value="0">Select a student</option>
+              {students.map(s => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <button className="button is-dark"
           onClick={event => {
             event.preventDefault() 
             handleSaveStudentClass()
           }}>
         Save Class Assignment</button>
+        </div>
       </form>
     )
 }

@@ -49,7 +49,7 @@ export const MessageList = () => {
 
   useEffect(() => {
     const filteredList = students.filter((student) => {
-      return student.parentId === parseInt(localStorage.polyglot_parent)})          
+      return student.parentId === parseInt(sessionStorage.polyglot_parent)})          
     setStudentDropdownList(filteredList)
   }, [students])
 
@@ -67,10 +67,10 @@ export const MessageList = () => {
 
   return (
     <>
-    <form className="classList">
-      <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Student Name: </label>
+    <section className="box">
+    <form className="classList field is-grouped">
+      <fieldset className="control">
+          <div className="select">
             <select id="classId" className="form-control" onChange={studentFilterResults}>
               <option value="0">Student name: </option>
               {studentDropdownList.map(c => (
@@ -81,9 +81,8 @@ export const MessageList = () => {
             </select>
           </div>
       </fieldset>
-      <fieldset>
-          <div className="form-group">
-            <label htmlFor="class">Class name: </label>
+      <fieldset className="control">
+          <div className="select">
             <select id="classId" className="form-control" onChange={classFilterResults}>
               <option value="0">Select a class: </option>
               {classDropdownList.map(c => (
@@ -95,13 +94,16 @@ export const MessageList = () => {
           </div>
       </fieldset>
     </form>
-    <div>
+    <div className="container columns">
+    <div className="column">
     {matchingMessages.map(message => (
       <MessageCard key={message.id} message={message} handleButtonClick={handleButtonClick}/>))}
     </div>
-    <div>
+    <div className="column">
       {showTranslation ? <TranslationList message={selectedMessage} /> : ""}  
     </div>
+    </div>
+      </section>
     </>
   )
 };

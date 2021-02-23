@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import "./ParentViews.css";
 import { ParentWelcome } from "./ParentWelcome"
 import { ParentProvider } from "./students/ParentProvider"
 import { ClassProvider } from "./classes/ClassProvider";
