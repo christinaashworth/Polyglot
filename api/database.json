@@ -13,16 +13,16 @@
       "id": 2
     },
     {
+      "id": 3,
       "classId": 5,
       "teacherId": 2,
-      "text": "The students will be reading 'Fahrenheit 451.' Please let me know if your child will need a copy of the book.",
-      "id": 3
+      "text": "The students will be reading Fahrenheit 451. Please let me know if your child will need a copy of the book. Thanks!"
     },
     {
       "id": 4,
       "classId": 6,
       "teacherId": 2,
-      "text": "The students will be reading 'The Catcher in the Rye.' Many teenagers feel that they can relate to the main character's feelings, so this should be an engaging read for your child. Chapter 1 should be finished by Thursday, when they will have a quiz."
+      "text": "The students will be reading The Catcher in the Rye. Many teenagers feel that they can relate to the main character's feelings, so this should be an engaging read for your child. Chapter 1 should be finished by Thursday, when they will have a quiz."
     }
   ],
   "teachers": [
@@ -174,6 +174,11 @@
       "name": "English 5th p.",
       "teacherId": 2,
       "id": 11
+    },
+    {
+      "name": "6th period English",
+      "teacherId": 2,
+      "id": 12
     }
   ],
   "StudentClasses": [
@@ -251,6 +256,16 @@
       "classId": 11,
       "studentId": 2,
       "id": 17
+    },
+    {
+      "classId": 12,
+      "studentId": 2,
+      "id": 18
+    },
+    {
+      "classId": 12,
+      "studentId": 4,
+      "id": 20
     }
   ]
 }

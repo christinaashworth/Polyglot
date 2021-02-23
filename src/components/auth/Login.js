@@ -20,7 +20,7 @@ export const Login = props => {
         existingTeacherCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("polyglot_teacher", exists.id)
+                    sessionStorage.setItem("polyglot_teacher", exists.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()
@@ -40,7 +40,7 @@ export const Login = props => {
         existingParentCheck()
             .then(exists => { 
                 if (exists) {
-                localStorage.setItem("polyglot_parent", exists.id)
+                sessionStorage.setItem("polyglot_parent", exists.id)
                 history.push("/")
             } else {
                 existDialog.current.showModal()

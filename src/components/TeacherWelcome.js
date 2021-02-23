@@ -9,7 +9,7 @@ export const TeacherWelcome = () => {
     getTeachers()
   }, [])
 
-  const findTeacher = () => teachers.find(t => t.id === parseInt(localStorage.polyglot_teacher))
+  const findTeacher = () => teachers.find(t => t.id === parseInt(sessionStorage.polyglot_teacher))
   const teacher = findTeacher()
 
   if (teacher) {

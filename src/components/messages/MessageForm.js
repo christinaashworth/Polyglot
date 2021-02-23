@@ -32,14 +32,14 @@ export const MessageForm = () => {
         updateMessage({
           id: message.id,
           classId: parseInt(message.classId),
-          teacherId: parseInt(localStorage.polyglot_teacher),
+          teacherId: parseInt(sessionStorage.polyglot_teacher),
           text: message.text
         })
           .then(() => history.push("/viewmessages"))
        } else {
         addMessage({
           classId: parseInt(message.classId),
-          teacherId: parseInt(localStorage.polyglot_teacher),
+          teacherId: parseInt(sessionStorage.polyglot_teacher),
           text: message.text
         })
           .then(() => history.push("/viewmessages"))
@@ -48,7 +48,7 @@ export const MessageForm = () => {
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
-        return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+        return classObj.teacherId === parseInt(sessionStorage.polyglot_teacher)})          
       setDisplayList(filterList)
     }, [classes])
     

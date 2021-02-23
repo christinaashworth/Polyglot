@@ -6,7 +6,7 @@ export const TranslationList = ({message}) => {
   const { results, addTranslation } = useContext(TranslationContext);
   const { parents, getParents } = useContext(ParentContext);
   
-  const applicableParent = parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
+  const applicableParent = parents.find(p => p.id === parseInt(sessionStorage.polyglot_parent))
   const userLanguage = applicableParent.language
   
   useEffect(() => { 

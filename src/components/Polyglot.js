@@ -13,7 +13,7 @@ export const Polyglot = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("polyglot_teacher")) {
+        if (sessionStorage.getItem("polyglot_teacher")) {
           return (
             <>
               <NavBar />
@@ -23,7 +23,7 @@ export const Polyglot = () => (
               <Footer />
             </>
           )
-        } else if (localStorage.getItem("polyglot_parent")) {
+        } else if (sessionStorage.getItem("polyglot_parent")) {
           return (
             <>
               <NavBar />

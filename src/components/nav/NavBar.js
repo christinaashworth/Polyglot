@@ -4,7 +4,7 @@ import { Logout } from "../auth/Logout";
 import logo from "./PolyglotLogo.png";
 
 export const NavBar = (props) => {
-  if (localStorage.polyglot_teacher) {
+  if (sessionStorage.polyglot_teacher) {
   return (
     <section className="navbar is-warning is-transparent">
       <div className="navbar-brand">

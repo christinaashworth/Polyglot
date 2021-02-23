@@ -9,7 +9,7 @@ export const ParentWelcome = () => {
     getParents()
   }, [])
 
-  const findParent = () => parents.find(p => p.id === parseInt(localStorage.polyglot_parent))
+  const findParent = () => parents.find(p => p.id === parseInt(sessionStorage.polyglot_parent))
   const parent = findParent()
   console.log(parent)
 

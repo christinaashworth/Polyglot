@@ -26,9 +26,9 @@ export const ClassForm = () => {
     const handleSaveClass = () => {
         addClass({
           name: classObj.name,
-          teacherId: parseInt(localStorage.polyglot_teacher)
+          teacherId: parseInt(sessionStorage.polyglot_teacher)
         })
-        .then(() => history.push("/addstudent"))
+        .then(() => history.push("/classlists"))
     }
 
     return (

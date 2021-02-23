@@ -38,7 +38,7 @@ export const StudentForm = () => {
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {
-        return classObj.teacherId === parseInt(localStorage.polyglot_teacher)})          
+        return classObj.teacherId === parseInt(sessionStorage.polyglot_teacher)})          
       setDisplayList(filterList)
     }, [classes])
     

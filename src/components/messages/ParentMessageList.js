@@ -49,7 +49,7 @@ export const MessageList = () => {
 
   useEffect(() => {
     const filteredList = students.filter((student) => {
-      return student.parentId === parseInt(localStorage.polyglot_parent)})          
+      return student.parentId === parseInt(sessionStorage.polyglot_parent)})          
     setStudentDropdownList(filteredList)
   }, [students])
 
