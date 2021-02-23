@@ -42,11 +42,9 @@ export const MessageForm = () => {
           teacherId: parseInt(localStorage.polyglot_teacher),
           text: message.text
         })
-          .then(() => { window.alert("Message sent!")
-          history.push("/viewmessages")
-        })
+          .then(() => history.push("/viewmessages"))
+        }
       }
-    }
 
     useEffect(() => {
       const filterList = classes.filter((classObj) => {

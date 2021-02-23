@@ -54,19 +54,20 @@ export const Login = props => {
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-            <section className="is-size-2 has-text-centered">Welcome to Polyglot!</section>
+            <section className="hero is-warning is-size-2 has-text-centered">
+                <section className="hero-body title"> Welcome to Polyglot! </section>
+            </section>
             <article className="columns is-flex-direction-row">
             <section className="column">
-                <form className="box has-text-centered" onSubmit={handleTeacherLogin}>
-                    <section className="is-size-4">Teacher Sign-In</section>
-                    <fieldset>
-                        <div className="section is-size-6"> Please enter your email address below </div>
-                            <input className="input" ref={teacherEmail} type="email"
-                                id="email"
-                                placeholder="Email address"
-                                required autoFocus />
+                <form className="box card" onSubmit={handleTeacherLogin}>
+                    <section className="card-header card-header-title is-centered block is-size-4">Teacher Sign-In</section>
+                    <fieldset className="block card-content">
+                        <input className="input" ref={teacherEmail} type="email"
+                            id="email"
+                            placeholder="Email address"
+                            required autoFocus />
                     </fieldset>
-                    <fieldset>
+                    <fieldset className="has-text-centered">
                         <button className="button is-dark" type="submit">
                             Sign in
                         </button>
@@ -74,16 +75,15 @@ export const Login = props => {
                 </form>
             </section>
             <section class="column">
-                <form className="box has-text-centered" onSubmit={handleParentLogin}>
-                    <section className="is-size-4">Parent Sign-In</section>
-                    <fieldset>
-                        <div className="section is-size-6" htmlFor="inputEmail"> Please enter your email address below </div>
-                            <input className="input" ref={parentEmail} type="email"
-                                id="email"
-                                placeholder="Email address"
-                                required autoFocus />
+                <form className="box card" onSubmit={handleParentLogin}>
+                    <section className="card-header card-header-title is-centered block is-size-4">Parent Sign-In</section>
+                    <fieldset className="block card-content">
+                        <input className="input" ref={parentEmail} type="email"
+                            id="email"
+                            placeholder="Email address"
+                            required autoFocus />
                     </fieldset>
-                    <fieldset>
+                    <fieldset className="has-text-centered">
                         <button className="button is-dark" type="submit">
                             Sign in
                         </button>

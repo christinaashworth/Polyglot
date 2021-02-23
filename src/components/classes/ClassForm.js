@@ -28,14 +28,17 @@ export const ClassForm = () => {
           name: classObj.name,
           teacherId: parseInt(localStorage.polyglot_teacher)
         })
-        .then(() => history.push("/addclass"))
+        .then(() => history.push("/addstudent"))
     }
 
     return (
-      <form className="container card">
+      <form className="container card block">
         <div className="card header card-header-title is-size-4">Add Class</div>
           <div className="card-content content">
-            <fieldset>
+            <div className="block">Enter the name of the new class list below.<br></br>
+              When you're finished, you will be redirected to the "Add Student" page, where you can add students to your class list.
+            </div>
+            <fieldset className="block">
               <input className="input" type="text" id="name" required autoFocus
               placeholder="Enter new class name:"
               onChange={handleControlledInputChange}

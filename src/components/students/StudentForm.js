@@ -33,7 +33,7 @@ export const StudentForm = () => {
           classId: parseInt(studentClass.classId),
           studentId: parseInt(studentClass.studentId)
         })
-        .then(() => history.push("/addstudent"))
+        .then(() => history.push("/classlists"))
     }
 
     useEffect(() => {
@@ -51,25 +51,28 @@ export const StudentForm = () => {
       <form className="container card">
         <div className="card header card-header-title is-size-4">Add Student to Class</div>
         <div className="card-content control">
-        <fieldset>
-          <div className="content select is-link">
-            <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
-              <option value="0">Select a student</option>
-              {students.map(s => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </fieldset>
-        <fieldset>
+        <div className="block">Select a class, then select a student to add to the selected class. <br></br>
+        Once you click "Save Class Assignment", you will be redirected to the "Class Lists" page.
+        </div>
+        <fieldset className="block">
           <div className="content select is-link">
             <select value={studentClass.classId} id="classId" className="form-control" onChange={handleControlledInputChange}>
               <option value="0">Select a class</option>
               {displayList.map(c => (
                 <option key={c.id} value={c.id}>
                   {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <fieldset className="block">
+          <div className="content select is-link">
+            <select value={studentClass.studentId} id="studentId" className="form-control" onChange={handleControlledInputChange}>
+              <option value="0">Select a student</option>
+              {students.map(s => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
                 </option>
               ))}
             </select>

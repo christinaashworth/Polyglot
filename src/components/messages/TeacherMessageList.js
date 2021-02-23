@@ -39,15 +39,13 @@ export const TeacherMessageList = () => {
 
   const handleDeleteMessage = (message) => {
     deleteMessage(message.id)
-    .then(() => {
-      window.alert("Deleted!")
-    })
+    .then(() => history.push("/viewmessages"))
   }
 
   return (
     <>
     <section className="section container card">
-    <div className="card-header card-header-title is-size-4">View Previous Messages</div>
+    <div className="card-header card-header-title is-size-4 block">View Previous Messages</div>
     <form>
     <fieldset>
           <div className="select is-link">

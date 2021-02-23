@@ -52,7 +52,7 @@ export const ClassList = () => {
     </form>
     </section>
     <div className="tile is-child card is-size-6">
-      <div className="card-header">Enrolled Students:</div>
+      <div className="card-header card-header-title">Enrolled Students:</div>
         <div className="card-content">
           {matchingStudentClasses.map(classObj => (
             <Student key={classObj.student.id} student={classObj.student} />))}

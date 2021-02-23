@@ -6,7 +6,7 @@ import { ParentProvider } from "./students/ParentProvider"
 import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Logout } from "./auth/Logout";
-// import "./Polyglot.css";
+import { Footer } from "./Footer"
 import { TeacherProvider } from "./classes/TeacherProvider";
 
 export const Polyglot = () => (
@@ -20,6 +20,7 @@ export const Polyglot = () => (
               <TeacherProvider>
                 <TeacherViews />
               </TeacherProvider>
+              <Footer />
             </>
           )
         } else if (localStorage.getItem("polyglot_parent")) {
@@ -29,6 +30,7 @@ export const Polyglot = () => (
               <ParentProvider>
                 <ParentViews />
               </ParentProvider>
+              <Footer />
             </>
           )
         }
